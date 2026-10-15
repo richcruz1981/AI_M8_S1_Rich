@@ -132,11 +132,11 @@ def test_revision_sin_token_termina_sin_error(monkeypatch, capsys):
 
 
 def test_los_agentes_se_presentan_con_su_nombre():
-    """Los nombres del mockup (Batuta, Iris, Euler, Vera) aparecen en Telegram."""
+    """Los nombres del mockup (Batuta, Iris, Ricardo, Vera) aparecen en Telegram."""
     avisos = []
     r = pl.pipeline("AAPL", avisar=avisos.append)
     texto = "\n".join(avisos)
-    for nombre in ("Batuta", "Iris", "Euler", "Vera"):
+    for nombre in ("Batuta", "Iris", "Ricardo", "Vera"):
         assert nombre in texto
     assert r["entrega_3_nota"].startswith(agentes.FIRMA_VERA)
 
