@@ -8,7 +8,7 @@ Tú das la orden desde **Telegram**, **Batuta** (el orquestador) dirige y tres e
 | Agente | Personalidad | Qué hace |
 |---|---|---|
 | **Iris** · La Recolectora | Curiosa y meticulosa; jamás inventa un dato | Consulta datos reales de Alpha Vantage por MCP |
-| **Euler** · El Analista | Riguroso con los números | Python calcula; Claude interpreta |
+| **Ricardo** · El Analista | Riguroso con los números | Python calcula; Claude interpreta |
 | **Vera** · La Comunicadora | Clara, breve y honesta | Redacta la nota final para Telegram |
 
 ```
@@ -18,7 +18,7 @@ Tú en Telegram: /analiza AAPL
  Batuta · Orquestador (mesa/pipeline.py)
         │
         ├─► Iris  · Recolectora ── consulta Alpha Vantage por MCP ──► ficha JSON
-        ├─► Euler · Analista ───── Python calcula, Claude interpreta ─► análisis JSON
+        ├─► Ricardo · Analista ───── Python calcula, Claude interpreta ─► análisis JSON
         └─► Vera  · Comunicadora ─ redacta la nota ───────────────────► mensaje en Telegram
 ```
 
