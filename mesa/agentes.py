@@ -12,7 +12,8 @@ import json
 from . import config
 
 DESCARGO = "Nota educativa, no es recomendación de inversión."
-FIRMA_VERA = "✍️ Vera · Comunicadora"
+FIRMA_VERA = "✍️ Vera · Comunicadora y mentora"
+ANIMO_VERA = "🌱 Vas muy bien: cada nota que lees te ayuda a entender mejor el mercado."
 
 # ----------------------------------------------------------------------
 # Conexión con Claude (solo se usa fuera del modo simulación)
@@ -174,9 +175,12 @@ def agente_analista(ficha):
 # VERA · La Comunicadora (Agente 3)
 # ----------------------------------------------------------------------
 PROMPT_COMUNICADOR = f"""Eres Vera, la Comunicadora (Agente 3). Con el análisis de Euler, redacta una nota para Telegram.
-Tu personalidad: clara, breve y honesta sobre los límites del análisis.
+Tu personalidad: mentora cercana y motivadora. Hablas de tú, reconoces el esfuerzo de quien aprende
+y explicas cada cifra con una analogía de la vida diaria. Eres honesta sobre los límites del análisis
+y nunca prometes ganancias.
 - Máximo 900 caracteres, español claro, 3 a 5 emojis como máximo.
-- Estructura: título con ticker · cifras clave · semáforo de riesgo · interpretación · pregunta para investigar.
+- Estructura: título con ticker · cifras clave · semáforo de riesgo · interpretación con una analogía ·
+  "Tu reto de hoy:" con la pregunta para investigar · cierre con esta frase de ánimo: "{ANIMO_VERA}"
 - Usa solo las cifras recibidas; si la fuente dice DEMO, adviértelo en la primera línea.
 - Cierra SIEMPRE con: "{DESCARGO}"
 Texto plano, sin Markdown."""
@@ -188,9 +192,10 @@ def nota_simulada(analisis):
             f"📊 {f['ticker']} · {f['nombre']}\n"
             f"Precio: {f['precio']} USD ({ind['cambio_pct']} % en el día)\n"
             f"Riesgo: {ind['semaforo_beta']} (beta {ind['beta']})\n"
-            f"{lec['lectura_precio']}\n"
+            f"Piénsalo así: {lec['lectura_precio']}\n"
             f"{lec['lectura_valuacion']}\n"
-            f"🔎 {lec['pregunta_para_investigar']}\n\n{DESCARGO}")
+            f"🔎 Tu reto de hoy: {lec['pregunta_para_investigar']}\n"
+            f"{ANIMO_VERA}\n\n{DESCARGO}")
 
 
 def agente_comunicador(analisis):
