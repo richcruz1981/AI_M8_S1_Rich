@@ -139,3 +139,19 @@ def test_los_agentes_se_presentan_con_su_nombre():
     for nombre in ("Batuta", "Iris", "Euler", "Vera"):
         assert nombre in texto
     assert r["entrega_3_nota"].startswith(agentes.FIRMA_VERA)
+
+
+def test_vera_mentora_motivadora():
+    """Vera habla como mentora: reto para investigar, frase de ánimo y descargo al final."""
+    nota = pl.pipeline("AAPL", avisar=lambda t: None)["entrega_3_nota"]
+    assert nota.startswith(agentes.FIRMA_VERA)
+    assert "Tu reto de hoy:" in nota and agentes.ANIMO_VERA in nota
+    assert nota.endswith(agentes.DESCARGO)
+    assert "mentora" in agentes.PROMPT_COMUNICADOR and agentes.ANIMO_VERA in agentes.PROMPT_COMUNICADOR
+
+
+def test_workflow_revisa_cada_30_minutos():
+    """El cron de GitHub Actions corre cada 30 minutos."""
+    ruta = os.path.join(os.path.dirname(__file__), "..", ".github", "workflows", "mesa-financiera.yml")
+    with open(ruta, encoding="utf-8") as f:
+        assert 'cron: "*/30 * * * *"' in f.read()
