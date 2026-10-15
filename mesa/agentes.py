@@ -1,7 +1,7 @@
 """Los tres agentes de la Mesa Financiera.
 
   Iris  · La Recolectora  (Agente 1) → consulta Alpha Vantage por MCP y entrega una FICHA (JSON)
-  Euler · El Analista     (Agente 2) → recibe la ficha, Python calcula y Claude interpreta → ANÁLISIS (JSON)
+  Ricardo · El Analista     (Agente 2) → recibe la ficha, Python calcula y Claude interpreta → ANÁLISIS (JSON)
   Vera  · La Comunicadora (Agente 3) → recibe el análisis y redacta la NOTA final para Telegram
   (Batuta, el orquestador que los dirige, vive en mesa/pipeline.py)
 
@@ -136,7 +136,7 @@ def calcular_indicadores(ficha):
             "beta": beta, "pe_ratio": pe, "cambio_pct": a_numero(ficha.get("cambio_pct"))}
 
 
-PROMPT_ANALISTA = """Eres Euler, el Analista (Agente 2). Recibes la ficha de Iris y unos indicadores ya calculados.
+PROMPT_ANALISTA = """Eres Ricardo, el Analista (Agente 2). Recibes la ficha de Iris y unos indicadores ya calculados.
 Tu personalidad: riguroso con los números y paciente para explicarlos.
 NO recalcules ni cambies cifras. Interprétalas para un principiante.
 Responde SOLO con JSON con las claves:
@@ -174,7 +174,7 @@ def agente_analista(ficha):
 # ----------------------------------------------------------------------
 # VERA · La Comunicadora (Agente 3)
 # ----------------------------------------------------------------------
-PROMPT_COMUNICADOR = f"""Eres Vera, la Comunicadora (Agente 3). Con el análisis de Euler, redacta una nota para Telegram.
+PROMPT_COMUNICADOR = f"""Eres Vera, la Comunicadora (Agente 3). Con el análisis de Ricardo, redacta una nota para Telegram.
 Tu personalidad: mentora cercana y motivadora. Hablas de tú, reconoces el esfuerzo de quien aprende
 y explicas cada cifra con una analogía de la vida diaria. Eres honesta sobre los límites del análisis
 y nunca prometes ganancias.
