@@ -11,7 +11,7 @@ import sys
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Mesa Financiera: Batuta dirige a Iris → Euler → Vera")
+    parser = argparse.ArgumentParser(description="Mesa Financiera: Batuta dirige a Iris → Ricardo → Vera")
     parser.add_argument("ticker", help="Clave de la acción, por ejemplo AAPL")
     parser.add_argument("--simulacion", action="store_true", help="No usa llaves: datos y agentes simulados")
     parser.add_argument("--telegram", action="store_true", help="Envía el avance y la nota a TELEGRAM_CHAT_ID")
