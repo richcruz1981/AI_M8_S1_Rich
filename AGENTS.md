@@ -6,11 +6,11 @@ un ecosistema de **3 agentes financieros** que se pasan el trabajo en cadena y s
 ```
 Telegram /analiza AAPL ─► Batuta · Orquestador (mesa/pipeline.py)
    ├─ Iris  · Recolectora  (Agente 1: Claude + MCP de Alpha Vantage) ─► ficha JSON
-   ├─ Euler · Analista     (Agente 2: Python calcula, Claude interpreta) ─► análisis JSON
+   ├─ Ricardo · Analista     (Agente 2: Python calcula, Claude interpreta) ─► análisis JSON
    └─ Vera  · Comunicadora (Agente 3: Claude redacta) ─► nota final en Telegram
 ```
 
-Usa siempre estos nombres (Batuta, Iris, Euler, Vera) al explicar el sistema: coinciden con el mockup y con las guías.
+Usa siempre estos nombres (Batuta, Iris, Ricardo, Vera) al explicar el sistema: coinciden con el mockup y con las guías.
 
 ## Cómo hablar con la persona usuaria
 - Responde en **español**, con lenguaje sencillo: la persona está aprendiendo.
