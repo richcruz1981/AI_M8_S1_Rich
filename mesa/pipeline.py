@@ -1,6 +1,6 @@
 """Batuta, el orquestador: decide el orden y pasa el output de cada agente como input del siguiente.
 
-Como un director de orquesta, no toca ningún instrumento: dirige a Iris, Euler y Vera."""
+Como un director de orquesta, no toca ningún instrumento: dirige a Iris, Ricardo y Vera."""
 import json
 import os
 import re
@@ -21,7 +21,7 @@ def normalizar_ticker(texto):
 
 
 def pipeline(ticker, avisar=print, guardar=True):
-    """Batuta ejecuta la cadena Iris → Euler → Vera.
+    """Batuta ejecuta la cadena Iris → Ricardo → Vera.
 
     avisar: función que recibe textos de avance (print en terminal, enviar a Telegram en el bot).
     Devuelve un diccionario con las tres entregas, útil como evidencia.
@@ -33,13 +33,13 @@ def pipeline(ticker, avisar=print, guardar=True):
     avisar(f"🛰️ Iris · Recolectora buscando datos de {ticker}…")
     ficha, herramientas = agente_recolector(ticker)
     if config.MODO_CLASE:
-        avisar("📦 Entrega 1→2 · Iris → Euler (ficha):\n" + json.dumps(ficha, ensure_ascii=False, indent=1)[:1500]
+        avisar("📦 Entrega 1→2 · Iris → Ricardo (ficha):\n" + json.dumps(ficha, ensure_ascii=False, indent=1)[:1500]
                + f"\n🔧 Herramientas MCP usadas: {', '.join(herramientas) or 'ninguna'}")
 
-    avisar("🧮 Euler · Analista calculando e interpretando…")
+    avisar("🧮 Ricardo · Analista calculando e interpretando…")
     analisis = agente_analista(ficha)
     if config.MODO_CLASE:
-        avisar("📦 Entrega 2→3 · Euler → Vera (indicadores):\n"
+        avisar("📦 Entrega 2→3 · Ricardo → Vera (indicadores):\n"
                + json.dumps(analisis["indicadores"], ensure_ascii=False, indent=1))
 
     avisar("✍️ Vera · Comunicadora redactando la nota…")
